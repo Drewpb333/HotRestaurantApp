@@ -1,0 +1,20 @@
+{
+  "name": "hotrestaurantapp",
+  "version": "1.0.0",
+  "description": "Application that reserves tables for up to five patrons.  Subsequent customers are put on a wait list",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Drewpb333/HotRestaurantApp.git"
+  },
+  "author": "GT Bootcamp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Drewpb333/HotRestaurantApp/issues"
+  },
+  "homepage": "https://github.com/Drewpb333/HotRestaurantApp#readme"
+}
