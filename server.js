@@ -24,46 +24,27 @@ app.get("/reserve", function (req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/api/tables", function(req, res){
-    res.json(reservations);
-    res.json(waitlist);
+app.get("/api/tables", function (req, res) {
+  console.log(reservations);
+  res.json(reservations);
 })
 
 app.get("/tables", function (req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-// app.get("/api/characters/:character", function (req, res) {
-//   var chosen = req.params.character;
-
-//   console.log(chosen);
-
-//   for (var i = 0; i < characters.length; i++) {
-//     if (chosen === characters[i].routeName) {
-//       return res.json(characters[i]);
-//     }
-//   }
-
-//   return res.json(false);
-
-// });
-
 var customersCount = 0;
 
-app.post("/reserve", function (req, res) {
-  customers++;
+app.post("/api/reservations", function (req, res) {
+  customersCount++;
 
   var newcustomer = req.body;
 
   newcustomer.routeName = newcustomer.name.replace(/\s+/g, "").toLowerCase();
 
   console.log(newcustomer);
-
-  if (customersCount < 6) {
-    reservations.push(newcustomer);
-  } else {
-    waitlist.push(newcustomer);
-  }
+ 
+  reservations.push(newcustomer);
 
   res.json(newcustomer);
 });

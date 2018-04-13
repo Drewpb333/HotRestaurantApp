@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Tables Page</title>
@@ -7,6 +8,7 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 	<div class="container">
 		<div class="jumbotron">
@@ -15,8 +17,12 @@
 			<h2 class="text-center">Current Reservations and Waiting List</h2>
 			<br>
 			<div class="text-center">
-				<a href="/reserve"><button type="button" class="btn btn-lg btn-danger">Make Reservation</button></a>
-				<a href="/"><button type="button" class="btn btn-lg btn-default">Home</button></a>
+				<a href="/reserve">
+					<button type="button" class="btn btn-lg btn-danger">Make Reservation</button>
+				</a>
+				<a href="/">
+					<button type="button" class="btn btn-lg btn-default">Home</button>
+				</a>
 			</div>
 		</div>
 		<div class="row">
@@ -37,36 +43,28 @@
 				</div>
 			</div>
 		</div>
-	    <footer class="footer">
-	      <div class="container">
-	      	<p>Control Panel</p>
-	        <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
-	      </div>
-	    </footer>
+		<footer class="footer">
+			<div class="container">
+				<p>Control Panel</p>
+				<p>
+					<a href="#" id="clear">Clear Table</a> |
+					<a href="/api/tables">API Table Link</a> |
+					<a href="/api/waitlist">API Wait List</a>
+				</p>
+			</div>
+		</footer>
 	</div>
 </body>
 <script>
-    $("#search-btn").on("click", function() {
-      var searchedCharacter = $("#character-search").val().trim();
-
-      // Using a RegEx Pattern to remove spaces from searchedCharacter
-      // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-      searchedCharacter = searchedCharacter.replace(/\s+/g, "").toLowerCase();
-
-      $.get("/api/characters/" + searchedCharacter, function(data) {
-        console.log(data);
-        if (data) {
-          $("#stats").show();
-          $("#name").text(data.name);
-          $("#role").text(data.phoneNumber);
-          $("#age").text(data.email);
-          $("#id").text(data.id);
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-      });
-    })
+	$.get("/api/tables", function (data) {
+		console.log(data);
+		if (data) {
+			$("#name").text(data.name);
+			$("#role").text(data.phone);
+			$("#age").text(data.email);
+			$("#id").text(data.uniqueID);
+		}
+	});
 </script>
+
 </html>
