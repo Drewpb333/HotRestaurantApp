@@ -57,12 +57,19 @@
 </body>
 <script>
 	$.get("/api/tables", function (data) {
+		//reserved
 		if (data) {
-			for (var i = 0; i < data.length; i++) {
-				$("#name").text(data[i].name);
-				$("#role").text(data[i].phone);
-				$("#age").text(data[i].email);
-				$("#id").text(data[i].uniqueID);
+			for (var i = 0; i < 5; i++) {
+				var newSpan = $("<span>");
+				newSpan.attr("class", "tableName");
+				$(".tableName").text("Name: " + data[i].name);
+				$("#tableSetion").append(newSpan);
+			}
+			for(var j = 5; j < data.length; j++){
+				var newSpan2 = $("<span>");
+				newSpan2.attr("class", "tableName");
+				$(".tableName").text("Name: " + data[j].name);
+				$("#waitlistSection").append(newSpan2);
 			}
 		}
 	});
