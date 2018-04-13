@@ -57,12 +57,13 @@
 </body>
 <script>
 	$.get("/api/tables", function (data) {
-		console.log(data);
 		if (data) {
-			$("#name").text(data.name);
-			$("#role").text(data.phone);
-			$("#age").text(data.email);
-			$("#id").text(data.uniqueID);
+			for (var i = 0; i < data.length; i++) {
+				$("#name").text(data[i].name);
+				$("#role").text(data[i].phone);
+				$("#age").text(data[i].email);
+				$("#id").text(data[i].uniqueID);
+			}
 		}
 	});
 </script>
